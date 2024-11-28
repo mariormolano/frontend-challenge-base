@@ -1,9 +1,17 @@
 import RootLayout from "./layout";
 
+import NavBar from "@/features/home/NavBar/NavBar";
+import Header from "@/features/home/Header/Header";
+import Main from "@/features/home/Main/Main";
+import LoginModal from "@/features/shared/LoginModal/LoginModal";
+
 export default function Home(): JSX.Element {
   return (
     <RootLayout>
-      <h1>Welcome to the Inlaze Next.js Starter!</h1>
+      <NavBar />
+      <Header />
+      <Main />
+      <LoginModal />
     </RootLayout>
   );
 }
