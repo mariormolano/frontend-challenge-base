@@ -5,7 +5,6 @@
   --main-aside-text: #ffffff;
 }
 
-html,
 * {
   font-size: 16px;
   font-family: "Inter", sans-serif;
@@ -13,11 +12,20 @@ html,
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  height: 400vh;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
 body {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   width: calc(100vw - 15px);
-  box-sizing: border-box;
+  height: 100%;
+  background: linear-gradient(180deg, #454545 0%, #343434 100%);
 }
 
 nav {
@@ -73,6 +81,7 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  box-shadow: 0px 0px 10px 0px #000000;
   & > article {
     height: 100%;
     width: 100%;
@@ -119,11 +128,80 @@ header {
 main {
   display: flex;
   width: 100%;
-  height: 200px;
+  height: 100%;
   & > aside {
     height: 100%;
     width: 260px;
     background: var(--main-aside-background);
+  }
+  & > section {
+    width: calc(98vw - 300px);
+    height: 381px;
+    padding: 10px 20px;
+    & h2 {
+      margin: 10px 0;
+      color: #ffffff;
+    }
+  }
+}
+.MovieList {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  box-sizing: border-box;
+  height: 381px;
+  width: 100%;
+  scrollbar-color: #f0b90b #262626;
+  overflow-x: scroll;
+  .movie-card {
+    background: #262626;
+    color: #ffffff;
+    width: 200px;
+    height: 335px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 10px;
+    .poster {
+      display: block;
+      width: 200px;
+      height: 223px;
+      box-sizing: border-box;
+      box-shadow: 0px 0px 10px 0px #000000;
+    }
+    .title {
+      box-sizing: border-box;
+      padding: 10px 0 0 10px;
+      line-height: 1.2em;
+      h2 {
+        padding: 0;
+        margin: 0;
+        font-size: 14px;
+        font-weight: 800;
+      }
+      p {
+        padding: 0;
+        margin: 0;
+        font-size: 9px;
+        font-weight: 400;
+      }
+    }
+    section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        p {
+          font-size: 9px;
+          font-weight: 400;
+        }
+      }
+    }
   }
 }
 
