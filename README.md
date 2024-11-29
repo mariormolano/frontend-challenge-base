@@ -16,7 +16,7 @@
 ### Instrucciones
 - Clone el reposito de Github:
 ```console
-$ git clone  
+$ git clone git@github.com:mariormolano/frontend-challenge-base.git
 ```
 - Ingrese a la carpeta 
 ```console
