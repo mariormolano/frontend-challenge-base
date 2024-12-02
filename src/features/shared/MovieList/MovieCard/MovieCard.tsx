@@ -1,25 +1,31 @@
-import { Movie } from "@/core/interfaces/Movie";
+"use client";
+import { useStore } from "exome/react";
+import { moviesStore } from "@/core/storage/movies.store";
+import { Movie } from "@/core/interfaces/movie.interface";
 import CircularProgressWithLabel from "@/features/shared/CircularProgressWithLabel/CircularProgressWithLabel";
 import Like from "@/features/home/Header/MovieBanner/Like/Like";
 
 const urlImage = "https://image.tmdb.org/t/p/w200";
 
 const MovieCard = (props: { movie: Movie }): JSX.Element => {
+  const { setSelectedMovie } = useStore(moviesStore);
   const { movie } = props;
   const DateMovie = new Date(movie.release_date);
   const day = DateMovie.getDate();
   const month = DateMovie.toLocaleDateString("default", {
     month: "long",
-  }).toLocaleUpperCase();
+  });
   const year = DateMovie.getFullYear();
 
   const ReleaseDate = `${month} ${day}, ${year}`;
 
   return (
-    <div className="movie-card">
+    <div className="MovieCard">
       <article
         className="poster"
+        onClick={() => setSelectedMovie(movie)}
         style={{ background: `url(${urlImage + movie.poster_path})` }}
+        role="presentation"
       ></article>
       <article className="title">
         <h2>{movie.title}</h2>
@@ -31,7 +37,7 @@ const MovieCard = (props: { movie: Movie }): JSX.Element => {
           <CircularProgressWithLabel
             value={movie.vote_average * 10}
             size="25px"
-            fontsize="9px"
+            textsize="9px"
           />
         </div>
         <div>

@@ -6,15 +6,15 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
 const CircularProgressWithLabel = (
-  props: CircularProgressProps & { value: number; fontsize: string },
+  props: CircularProgressProps & { value: number; textsize: string },
 ): JSX.Element => {
-  const { value, fontsize } = props;
+  const { value, textsize } = props;
   let percentageColor: object = { color: "black" };
   if (value > 0) {
     percentageColor = { color: "red" };
   }
   if (value > 33) {
-    percentageColor = { color: "yellow" };
+    percentageColor = { color: "orange" };
   }
   if (value > 66) {
     percentageColor = { color: "green" };
@@ -37,8 +37,10 @@ const CircularProgressWithLabel = (
         <Typography
           variant="caption"
           component="div"
-          sx={{ color: "white", fontSize: fontsize }}
-        >{`${Math.round(props.value)}%`}</Typography>
+          sx={{ color: "white", fontSize: textsize }}
+        >
+          {props.value ? `${Math.round(props.value)}%` : "NR"}
+        </Typography>
       </Box>
     </Box>
   );

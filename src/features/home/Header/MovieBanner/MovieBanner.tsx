@@ -19,7 +19,7 @@ const MovieBanner = (props: {
       </section>
       <aside>
         <Like />
-        <CircularProgressWithLabel value={value} fontsize="30px" size="92px" />
+        <CircularProgressWithLabel value={value} textsize="30px" size="92px" />
       </aside>
     </article>
   );

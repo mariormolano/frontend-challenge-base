@@ -1,52 +1,49 @@
+"use client";
 import { Exome } from "exome";
-import { Movie } from "../interfaces/Movie";
+import { Movie } from "../interfaces/movie.interface";
+import {
+  popularMovies,
+  nowPlayingMovies,
+  upcomingMovies,
+  topRatedMovies,
+  favoriteMovies,
+} from "../services/movies.service";
 
 class MoviesStore extends Exome {
   public popularMovies: Movie[] = [];
+  public moviesStatus: boolean = false;
   public nowPlayingMovies: Movie[] = [];
   public upcomingMovies: Movie[] = [];
   public topRatedMovies: Movie[] = [];
   public favoriteMovies: Movie[] = [];
-  public pelicula: Movie | null = null;
+  public selectedMovie: Movie | null = null;
 
-  public async setPopularMovies(page: number): Promise<void> {
-    await fetch(`http://localhost:3005/movie/popular?page=${page}`)
-      .then((response) => response.json())
-      .then((data) => {
-        this.popularMovies = data.results as Movie[];
-      });
+  public async setPopularMovies(page: number = 1): Promise<void> {
+    this.popularMovies = await popularMovies(page).then((data) => {
+      this.moviesStatus = true;
+      this.selectedMovie = data[Math.floor(Math.random() * data.length)];
+      return data;
+    });
   }
 
-  public async setNowPlayingMovies(page: number): Promise<void> {
-    await fetch(`http://localhost:3005/movie/nowplaying?page=${page}`)
-      .then((response) => response.json())
-      .then((data) => {
-        this.nowPlayingMovies = data.results as Movie[];
-      });
+  public async setNowPlayingMovies(page: number = 1): Promise<void> {
+    this.nowPlayingMovies = await nowPlayingMovies(page);
   }
 
-  public async setUpcomingMovies(page: number): Promise<void> {
-    await fetch(`http://localhost:3005/movie/upcoming?page=${page}`)
-      .then((response) => response.json())
-      .then((data) => {
-        this.upcomingMovies = data.results as Movie[];
-      });
+  public async setUpcomingMovies(page: number = 1): Promise<void> {
+    this.upcomingMovies = await upcomingMovies(page);
   }
 
-  public async setTopRatedMovies(page: number): Promise<void> {
-    await fetch(`http://localhost:3005/movie/toprated?page=${page}`)
-      .then((response) => response.json())
-      .then((data) => {
-        this.topRatedMovies = data.results as Movie[];
-      });
+  public async setTopRatedMovies(page: number = 1): Promise<void> {
+    this.topRatedMovies = await topRatedMovies(page);
   }
 
-  public async setFavoriteMovies(page: number): Promise<void> {
-    await fetch(`http://localhost:3005/movie/favorite?page=${page}`)
-      .then((response) => response.json())
-      .then((data) => {
-        this.favoriteMovies = data.results as Movie[];
-      });
+  public async setFavoriteMovies(page: number = 1): Promise<void> {
+    this.favoriteMovies = await favoriteMovies(page);
+  }
+
+  public setSelectedMovie(movie: Movie): void {
+    this.selectedMovie = movie;
   }
 }
 
