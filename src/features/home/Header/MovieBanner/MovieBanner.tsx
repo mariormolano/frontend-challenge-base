@@ -8,8 +8,8 @@ const MovieBanner = (props: {
 }): JSX.Element => {
   const { title, description, value } = props;
   return (
-    <article>
-      <section>
+    <article className="MovieBanner">
+      <section className="MovieBannerDescription">
         <dl>
           <dt>
             <h1>{title}</h1>

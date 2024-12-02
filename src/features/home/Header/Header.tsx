@@ -28,7 +28,7 @@ const Header = (): JSX.Element => {
     background.current.style.backgroundImage = `url('${urlImage}')`;
   }
   return (
-    <header ref={background}>
+    <header ref={background} className="header">
       <MovieBanner
         title={title}
         description={desciption}
