@@ -1,9 +1,6 @@
-import RootLayout from "./layout";
+import { redirect } from "next/navigation";
+const Home = (): JSX.Element => {
+  redirect("/home");
+};
 
-export default function Home(): JSX.Element {
-  return (
-    <RootLayout>
-      <h1>Welcome to the Inlaze Next.js Starter!</h1>
-    </RootLayout>
-  );
-}
+export default Home;
