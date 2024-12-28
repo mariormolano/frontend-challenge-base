@@ -15,7 +15,7 @@ const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>): JSX.Element => {
+}>): React.ReactElement => {
   return (
     <html lang="es">
       <body className={inter.className}>

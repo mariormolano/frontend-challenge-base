@@ -1,5 +1,7 @@
-const Home = (): JSX.Element => {
-  return <h1>Welcome to the Inlaze Next.js Starter!</h1>;
+import Header from "@/features/Header/Header";
+
+const Home = (): React.ReactElement => {
+  return <Header />;
 };
 
 export default Home;

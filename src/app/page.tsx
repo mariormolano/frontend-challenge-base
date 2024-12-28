@@ -1,9 +1,5 @@
-import RootLayout from "./layout";
+import { redirect } from "next/navigation";
 
-export default function Home(): JSX.Element {
-  return (
-    <RootLayout>
-      <p>Home</p>
-    </RootLayout>
-  );
+export default function Home(): React.ReactElement {
+  redirect("/home");
 }

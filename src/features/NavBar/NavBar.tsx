@@ -2,11 +2,9 @@
 import "./NavBar.css";
 import Image from "next/image";
 import Logo from "@/assets/images/logo.svg";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import { Avatar } from "@mui/material";
+import LoginIcon from "./LoginIcon/LoginIcon";
 
-const NavBar = (): JSX.Element => {
-  const session = true;
+const NavBar = (): React.ReactElement => {
   return (
     <nav className="NavBar">
       <ul>
@@ -16,18 +14,7 @@ const NavBar = (): JSX.Element => {
         <li>Popular</li>
         <li>Favorites</li>
       </ul>
-      {/* <picture onClick={openModal}> */}
-      <picture>
-        {session ? (
-          <Avatar
-            alt="Remy Sharp"
-            src="https://mui.com/static/images/avatar/1.jpg"
-            sx={{ fontSize: 32, cursor: "pointer" }}
-          />
-        ) : (
-          <AccountCircle sx={{ fontSize: 32, cursor: "pointer" }} />
-        )}
-      </picture>
+      <LoginIcon />
     </nav>
   );
 };
