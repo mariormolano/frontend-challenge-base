@@ -10,16 +10,15 @@ import FormLogin from "./FormLogin/FormLogin";
 import FormLogout from "./FormLogout/FormLogout";
 
 const LoginModal = (): JSX.Element => {
-  const { modalSatate, closeModal } = useStore(eventsStore);
-  //  const { session } = useStore(authStore);
+  const { modalSatate } = useStore(eventsStore);
   const session = false;
 
   return modalSatate ? (
-    <dialog id="authform">
+    <dialog id="authform" className="LoginModal">
       <article>
         <section>
           <div className="back">
-            <p onClick={closeModal}>
+            <p>
               <ArrowCircleLeft /> Back
             </p>
           </div>

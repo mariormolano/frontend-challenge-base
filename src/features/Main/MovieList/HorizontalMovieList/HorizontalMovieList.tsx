@@ -1,3 +1,4 @@
+import "./HorizontalMovieList.css";
 import { Movie } from "@/core/interfaces/movie.interface";
 import MovieCard from "../MovieCard/MovieCard";
 import { useRef, useState } from "react";

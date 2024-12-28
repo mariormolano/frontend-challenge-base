@@ -1,0 +1,96 @@
+.SearchBar {
+  width: 260px;
+  background: var(--main-aside-background);
+  display: flex;
+  box-sizing: border-box;
+  padding: 20px;
+
+  form {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: left;
+    gap: 20px;
+
+    span {
+      gap: 20px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      div {
+        width: 100%;
+        display: flex;
+      }
+      button {
+        margin: 0;
+        padding: 0;
+        background: none;
+        border-style: none;
+        color: #ffffff;
+        position: relative;
+        left: -30px;
+        cursor: pointer;
+      }
+    }
+
+    input {
+      height: 46px;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      border-bottom: 1px solid #454545 !important;
+      &::placeholder {
+        transition: 0.5s;
+        color: #ffffff;
+      }
+      &:focus {
+        border-bottom: 1px solid #ffffff !important;
+        outline: none;
+      }
+      &:focus::placeholder {
+        color: transparent;
+        transition: 0.5s;
+      }
+      &:autofill {
+        -webkit-text-fill-color: #ffffff;
+        -webkit-box-shadow: 0 0 0px 1000px #262626 inset;
+        box-shadow: 0 0 0px 1000px #262626 inset;
+      }
+    }
+
+    select {
+      height: 46px;
+      cursor: pointer;
+    }
+
+    input,
+    select {
+      width: 228px;
+      background: #1c1c1c;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 400;
+      border-style: none;
+      box-sizing: border-box;
+      padding: 0 10px;
+      option:first-child {
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .SearchBar {
+    width: 100%;
+    form {
+      flex-direction: row;
+      input,
+      select {
+        width: 100%;
+      }
+    }
+  }
+}

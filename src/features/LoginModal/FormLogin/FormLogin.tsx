@@ -1,7 +1,6 @@
 "use client";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { Login, Signup } from "../actions";
 import { useStore } from "exome/react";
 import { eventsStore } from "@/core/storage/events.store";
 
@@ -32,9 +31,7 @@ const FormLogin = (): JSX.Element => {
           {showPassword === "password" ? <VisibilityOff /> : <Visibility />}
         </div>
       </span>
-      <button className="submitButton" formAction={slide ? Login : Signup}>
-        {slide ? "Log In with Supabase" : "Sign Up with Supabase"}
-      </button>
+      <button className="submitButton">{slide ? "Log In " : "Sign Up "}</button>
     </form>
   );
 };

@@ -2,7 +2,7 @@
 import { FavoriteBorder, Favorite } from "@mui/icons-material";
 import { useState } from "react";
 
-const Like = (): React.ReactElement => {
+const Like: React.FC = () => {
   const [likeSelect, setLikeSelect] = useState(false);
   return (
     <>

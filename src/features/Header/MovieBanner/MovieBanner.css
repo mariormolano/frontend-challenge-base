@@ -1,0 +1,46 @@
+.MovieBanner {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    background: linear-gradient(
+      0deg,
+      rgb(0, 0, 0) 19%,
+      rgba(102, 102, 102, 0) 100%
+    );
+
+    .MovieBannerDescription {
+      display: flex;
+      justify-content: left;
+      align-items: flex-start;
+      width: 70%;
+
+      dl {
+        padding: 0 4vw;
+
+        dt {
+          h1 {
+            font-size: 2em;
+            margin: 0 0 0.5em 0;
+          }
+        }
+
+        dd {
+          margin-inline-start: 0px;
+          font-weight: 600;
+        }
+      }
+    }
+
+    aside {
+      display: flex;
+      justify-content: center;
+      gap: 1vw;
+      align-items: center;
+      width: 30%;
+      height: 170px;
+    }
+  }

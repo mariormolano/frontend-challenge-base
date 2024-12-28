@@ -1,7 +1,13 @@
 import Header from "@/features/Header/Header";
+import Main from "@/features/Main/Main";
 
-const Home = (): React.ReactElement => {
-  return <Header />;
+const Home: React.FC = () => {
+  return (
+    <>
+      <Header />
+      <Main />
+    </>
+  );
 };
 
 export default Home;

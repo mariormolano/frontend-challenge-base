@@ -1,5 +1,5 @@
 "use client";
-//import "./MovieBanner.css";
+import "./MovieBanner.css";
 import { useRef } from "react";
 import Like from "./Like/Like";
 import CircularProgressWithLabel from "@/features/shared/CircularProgressWithLabel/CircularProgressWithLabel";

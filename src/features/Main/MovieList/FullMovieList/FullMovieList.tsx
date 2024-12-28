@@ -1,3 +1,4 @@
+import "./FullMovieList.css";
 import { Movie } from "@/core/interfaces/movie.interface";
 import MovieCard from "@/features/Main/MovieList/MovieCard/MovieCard";
 

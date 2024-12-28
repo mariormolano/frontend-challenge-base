@@ -1,69 +1,23 @@
-"use client";
+"use server";
+import "./Main.css";
 import SearchBar from "./SearchBar/SearchBar";
 import MovieList from "@/features/Main/MovieList/MovieList";
-import { useStore } from "exome/react";
-import { moviesStore } from "@/core/storage/movies.store";
-import { searchStore } from "@/core/storage/search.store";
-import { favoriteStore } from "@/core/storage/favorite.store";
-import { useEffect } from "react";
-const Main = (): JSX.Element => {
-  const { popularMovies, setPopularMovies, moviesStatus } =
-    useStore(moviesStore);
-  const { searchStatus, moviesResult } = useStore(searchStore);
-  const { nowPlayingMovies, setNowPlayingMovies } = useStore(moviesStore);
-  const { upcomingMovies, setUpcomingMovies } = useStore(moviesStore);
-  const { topRatedMovies, setTopRatedMovies } = useStore(moviesStore);
-  const { favoriteMovies, setFavoriteMovies } = useStore(moviesStore);
-
-  const { getFavorites } = useStore(favoriteStore);
-  useEffect(() => {
-    if (!moviesStatus) {
-      setPopularMovies(1);
-      setNowPlayingMovies(1);
-      setUpcomingMovies(1);
-      setTopRatedMovies(1);
-      setFavoriteMovies(1);
-      getFavorites();
-    }
-  }, [moviesStatus]);
+const Main: React.FC = () => {
+  const searchStatus = false;
 
   return (
-    <main>
+    <main className="Main">
       <SearchBar />
       <section>
         {searchStatus ? (
-          <MovieList
-            movies={moviesResult}
-            title={"Search result"}
-            type="full"
-          />
+          <MovieList category={""} title={"Search result"} type="full" />
         ) : (
           <>
-            <MovieList
-              movies={popularMovies}
-              title="Popular"
-              type="horizontal"
-            />
-            <MovieList
-              movies={nowPlayingMovies}
-              title="Now Playing"
-              type="horizontal"
-            />
-            <MovieList
-              movies={upcomingMovies}
-              title="Upcoming"
-              type="horizontal"
-            />
-            <MovieList
-              movies={topRatedMovies}
-              title="Top Rated"
-              type="horizontal"
-            />
-            <MovieList
-              movies={favoriteMovies}
-              title="Favorites"
-              type="horizontal"
-            />
+            <MovieList category={""} title="Popular" type="horizontal" />
+            <MovieList category={""} title="Now Playing" type="horizontal" />
+            <MovieList category={""} title="Upcoming" type="horizontal" />
+            <MovieList category={""} title="Top Rated" type="horizontal" />
+            <MovieList category={""} title="Favorites" type="horizontal" />
           </>
         )}
       </section>

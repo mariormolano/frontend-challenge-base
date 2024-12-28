@@ -1,6 +1,5 @@
 "use client";
-//import { useStore } from "exome/react";
-//import { moviesStore } from "@/core/storage/movies.store";
+import "./MovieCard.css";
 import { Movie } from "@/core/interfaces/movie.interface";
 import CircularProgressWithLabel from "@/features/shared/CircularProgressWithLabel/CircularProgressWithLabel";
 import Like from "@/features/Header/MovieBanner/Like/Like";
@@ -14,7 +13,6 @@ interface Props {
 
 const MovieCard: React.FC<Props> = ({ movie }) => {
   const background = useRef<HTMLDivElement>(null);
-  //const { setSelectedMovie } = useStore(moviesStore);
   const DateMovie = new Date(movie.release_date);
   const day = DateMovie.getDate();
   const month = DateMovie.toLocaleDateString("default", {
@@ -30,12 +28,7 @@ const MovieCard: React.FC<Props> = ({ movie }) => {
 
   return (
     <div className="MovieCard">
-      <article
-        className="poster"
-        //onClick={() => setSelectedMovie(movie)}
-        ref={background}
-        //role="presentation"
-      ></article>
+      <article className="poster" ref={background}></article>
       <article className="title">
         <h2>{movie.title}</h2>
         <p>{String(ReleaseDate)}</p>

@@ -1,0 +1,9 @@
+.FullMovieList {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
