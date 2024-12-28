@@ -1,6 +1,9 @@
-import { redirect } from "next/navigation";
-const Home = (): JSX.Element => {
-  redirect("/home");
-};
+import RootLayout from "./layout";
 
-export default Home;
+export default function Home(): JSX.Element {
+  return (
+    <RootLayout>
+      <p>Home</p>
+    </RootLayout>
+  );
+}

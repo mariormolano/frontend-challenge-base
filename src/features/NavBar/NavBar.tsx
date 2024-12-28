@@ -1,4 +1,5 @@
-"use client";
+"use server";
+import "./NavBar.css";
 import Image from "next/image";
 import Logo from "@/assets/images/logo.svg";
 import AccountCircle from "@mui/icons-material/AccountCircle";
@@ -7,7 +8,7 @@ import { Avatar } from "@mui/material";
 const NavBar = (): JSX.Element => {
   const session = true;
   return (
-    <nav>
+    <nav className="NavBar">
       <ul>
         <li>
           <Image src={Logo} alt="Logo" width={164} height={42} />

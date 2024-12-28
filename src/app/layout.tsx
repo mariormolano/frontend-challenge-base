@@ -1,3 +1,4 @@
+import NavBar from "@/features/NavBar/NavBar";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -16,8 +17,11 @@ const RootLayout = ({
   children: React.ReactNode;
 }>): JSX.Element => {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="es">
+      <body className={inter.className}>
+        <NavBar />
+        {children}
+      </body>
     </html>
   );
 };
