@@ -15,7 +15,7 @@ const Main: React.FC = () => {
           <>
             <MovieList category={"popular"} title="Popular" type="horizontal" />
             <MovieList
-              category={"nowplaying"}
+              category={"now_playing"}
               title="Now Playing"
               type="horizontal"
             />
@@ -25,7 +25,7 @@ const Main: React.FC = () => {
               type="horizontal"
             />
             <MovieList
-              category={"toprated"}
+              category={"top_rated"}
               title="Top Rated"
               type="horizontal"
             />

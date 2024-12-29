@@ -3,6 +3,7 @@ import "./MovieList.css";
 import HorizontalMovieList from "./HorizontalMovieList/HorizontalMovieList";
 import FullMovieList from "./FullMovieList/FullMovieList";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { getMovieList } from "@/core/services/movies.service";
 
 interface Props {
   category: string;
@@ -16,7 +17,16 @@ const MovieList: React.FC<Props> = ({ category, title, type }) => {
       {type === "horizontal" ? (
         <span>
           <h2>{title}</h2>
-          <HorizontalMovieList category={category} />
+          <HorizontalMovieList
+            title={category}
+            movie={
+              new Promise((resolve) => {
+                setTimeout(() => {
+                  getMovieList(category, 1).then((data) => resolve(data));
+                }, 5000);
+              })
+            }
+          />
         </span>
       ) : (
         <span>

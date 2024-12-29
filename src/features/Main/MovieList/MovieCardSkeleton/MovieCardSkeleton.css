@@ -15,7 +15,7 @@
     box-sizing: border-box;
     background: linear-gradient(90deg, #262626 0%, #575757 50%, #262626 100%);
     background-size: 400% 400%;
-    animation: identifier 1.5s infinite;
+    animation: identifier 8s infinite;
   }
 
   .title {

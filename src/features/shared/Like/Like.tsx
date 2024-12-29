@@ -10,7 +10,7 @@ const Like: React.FC<Props> = ({ id }) => {
   const [likeSelect, changeLike] = useLikeStore(id);
 
   return (
-    <>
+    <aside>
       {likeSelect ? (
         <Favorite
           sx={{ color: "white", cursor: "pointer" }}
@@ -22,7 +22,7 @@ const Like: React.FC<Props> = ({ id }) => {
           onClick={() => (id ? changeLike(true) : null)}
         />
       )}
-    </>
+    </aside>
   );
 };
 

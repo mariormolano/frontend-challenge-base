@@ -3,8 +3,6 @@ import "./MovieCard.css";
 import { Movie } from "@/core/interfaces/movie.interface";
 import CircularProgressWithLabel from "@/features/shared/CircularProgressWithLabel/CircularProgressWithLabel";
 import Like from "@/features/shared/Like/Like";
-import { useRef } from "react";
-
 const urlImage = "https://image.tmdb.org/t/p/w200";
 
 interface Props {
@@ -12,7 +10,6 @@ interface Props {
 }
 
 const MovieCard: React.FC<Props> = ({ movie }) => {
-  const background = useRef<HTMLDivElement>(null);
   const DateMovie = new Date(movie.release_date);
   const day = DateMovie.getDate();
   const month = DateMovie.toLocaleDateString("default", {
@@ -22,13 +19,12 @@ const MovieCard: React.FC<Props> = ({ movie }) => {
 
   const ReleaseDate = `${month} ${day}, ${year}`;
 
-  if (background.current) {
-    background.current.style.background = `url(${urlImage + movie.poster_path})`;
-  }
-
   return (
     <div className="MovieCard">
-      <article className="poster" ref={background}></article>
+      <article
+        className="poster"
+        style={{ backgroundImage: `url(${urlImage + movie.poster_path})` }}
+      ></article>
       <article className="title">
         <h2>{movie.title}</h2>
         <p>{String(ReleaseDate)}</p>

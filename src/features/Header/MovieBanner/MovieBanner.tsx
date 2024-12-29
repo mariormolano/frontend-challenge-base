@@ -3,6 +3,8 @@ import "./MovieBanner.css";
 import Like from "../../shared/Like/Like";
 import CircularProgressWithLabel from "@/features/shared/CircularProgressWithLabel/CircularProgressWithLabel";
 import { Movie } from "@/core/interfaces/movie.interface";
+import { useEffect, useState } from "react";
+import MovieBannerSkeleton from "../MovieBannerSkeleton/MovieBannerSkeleton";
 
 const apiUrlImage = "https://image.tmdb.org/t/p/original";
 
@@ -10,29 +12,40 @@ interface Props {
   data: Promise<Movie>;
 }
 
-const MovieBanner: React.FC<Props> = async ({ data }) => {
-  const { id, title, overview, backdrop_path: backdropPath } = await data;
+const MovieBanner: React.FC<Props> = ({ data }) => {
+  const [movie, setMovie] = useState<Movie | null>(null);
+  useEffect(() => {
+    data.then((movie) => {
+      setMovie(movie);
+    });
+  }, []);
 
-  return (
+  return movie ? (
     <main
       className="MovieBannerContainer"
-      style={{ backgroundImage: `url(${apiUrlImage}${backdropPath})` }}
+      style={{ backgroundImage: `url(${apiUrlImage}${movie.backdrop_path})` }}
     >
       <article className="MovieBanner">
         <section className="MovieBannerDescription">
           <dl>
             <dt>
-              <h1>{title}</h1>
+              <h1>{movie.title}</h1>
             </dt>
-            <dd>{overview}</dd>
+            <dd>{movie.overview}</dd>
           </dl>
         </section>
         <aside>
-          <Like id={id} />
-          <CircularProgressWithLabel value={50} textsize="25px" size="92px" />
+          <Like id={movie.id} />
+          <CircularProgressWithLabel
+            value={movie.vote_average * 10}
+            textsize="25px"
+            size="92px"
+          />
         </aside>
       </article>
     </main>
+  ) : (
+    <MovieBannerSkeleton />
   );
 };
 

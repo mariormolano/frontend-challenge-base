@@ -1,21 +1,23 @@
 "use client";
 import "./HorizontalMovieList.css";
-//import MovieCard from "../MovieCard/MovieCard";
 import MovieCardSkeleton from "../MovieCardSkeleton/MovieCardSkeleton";
-import { useRef, useState } from "react";
-import { popularMovies } from "@/core/services/movies.service";
+import MovieCard from "../MovieCard/MovieCard";
+import { useEffect, useRef, useState } from "react";
+import { Movie } from "@/core/interfaces/movie.interface";
 
 interface Props {
-  category: string;
+  movie: Promise<Movie[]>;
+  title: string;
 }
 
-const HorizontalMovieList: React.FC<Props> = ({ category }) => {
+const HorizontalMovieList: React.FC<Props> = ({ movie, title }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [movieList, setMovieList] = useState<Movie[] | null>(null);
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>): void => {
+  const handleMouseDown = (e: React.MouseEvent): void => {
     setIsDragging(true);
     if (scrollRef.current) {
       setStartX(e.pageX - scrollRef.current.offsetLeft);
@@ -23,7 +25,7 @@ const HorizontalMovieList: React.FC<Props> = ({ category }) => {
     }
   };
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>): void => {
+  const handleMouseMove = (e: React.MouseEvent): void => {
     if (!isDragging) return;
     e.preventDefault();
     if (scrollRef.current) {
@@ -40,28 +42,34 @@ const HorizontalMovieList: React.FC<Props> = ({ category }) => {
     scrollRef.current.style.cursor = "default";
   };
 
-  if (category === "popular") {
-    popularMovies(1).then((movies) => {
-      //console.log(movies);
-    });
-  }
+  useEffect(() => {
+    movie.then(setMovieList);
+  }, []);
 
   return (
-    <article
+    <div
       className="HorizontalMovieList"
       ref={scrollRef}
-      onMouseMove={handleMouseMove}
+      onMouseOver={handleMouseMove}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUpOrLeave}
       onMouseLeave={handleMouseUpOrLeave}
-      role="presentation"
     >
-      <MovieCardSkeleton />
-      <MovieCardSkeleton />
-      <MovieCardSkeleton />
-      <MovieCardSkeleton />
-      <MovieCardSkeleton />
-    </article>
+      <img alt="" style={{ display: "none" }} />
+      {movieList ? (
+        movieList.map((movie) => {
+          return <MovieCard key={movie.id} movie={movie} />;
+        })
+      ) : (
+        <>
+          <MovieCardSkeleton />
+          <MovieCardSkeleton />
+          <MovieCardSkeleton />
+          <MovieCardSkeleton />
+          <MovieCardSkeleton />
+        </>
+      )}
+    </div>
   );
 };
 
