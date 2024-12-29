@@ -2,7 +2,7 @@
 import "./MovieCard.css";
 import { Movie } from "@/core/interfaces/movie.interface";
 import CircularProgressWithLabel from "@/features/shared/CircularProgressWithLabel/CircularProgressWithLabel";
-import Like from "@/features/Header/MovieBanner/Like/Like";
+import Like from "@/features/shared/Like/Like";
 import { useRef } from "react";
 
 const urlImage = "https://image.tmdb.org/t/p/w200";

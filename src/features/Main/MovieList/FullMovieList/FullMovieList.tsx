@@ -2,8 +2,11 @@ import "./FullMovieList.css";
 import { Movie } from "@/core/interfaces/movie.interface";
 import MovieCard from "@/features/Main/MovieList/MovieCard/MovieCard";
 
-const FullMovieList = (props: { movies: Movie[] }): JSX.Element => {
-  const { movies } = props;
+interface Props {
+  movies?: Movie[];
+}
+
+const FullMovieList: React.FC<Props> = ({ movies }) => {
   return (
     <article className="FullMovieList">
       {movies?.map((movie: Movie) =>

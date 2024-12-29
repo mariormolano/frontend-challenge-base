@@ -1,20 +1,25 @@
 "use client";
 import { FavoriteBorder, Favorite } from "@mui/icons-material";
-import { useState } from "react";
+import useLikeStore from "@/core/hooks/useLikeStore";
 
-const Like: React.FC = () => {
-  const [likeSelect, setLikeSelect] = useState(false);
+interface Props {
+  id?: number;
+}
+
+const Like: React.FC<Props> = ({ id }) => {
+  const [likeSelect, changeLike] = useLikeStore(id);
+
   return (
     <>
       {likeSelect ? (
         <Favorite
           sx={{ color: "white", cursor: "pointer" }}
-          onClick={() => setLikeSelect(false)}
+          onClick={() => (id ? changeLike(false) : null)}
         />
       ) : (
         <FavoriteBorder
           sx={{ color: "white", cursor: "pointer" }}
-          onClick={() => setLikeSelect(true)}
+          onClick={() => (id ? changeLike(true) : null)}
         />
       )}
     </>

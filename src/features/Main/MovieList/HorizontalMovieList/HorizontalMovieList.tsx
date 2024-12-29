@@ -1,10 +1,15 @@
+"use client";
 import "./HorizontalMovieList.css";
-import { Movie } from "@/core/interfaces/movie.interface";
-import MovieCard from "../MovieCard/MovieCard";
+//import MovieCard from "../MovieCard/MovieCard";
+import MovieCardSkeleton from "../MovieCardSkeleton/MovieCardSkeleton";
 import { useRef, useState } from "react";
+import { popularMovies } from "@/core/services/movies.service";
 
-const HorizontalMovieList = (props: { movies: Movie[] }): JSX.Element => {
-  const { movies } = props;
+interface Props {
+  category: string;
+}
+
+const HorizontalMovieList: React.FC<Props> = ({ category }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -34,6 +39,13 @@ const HorizontalMovieList = (props: { movies: Movie[] }): JSX.Element => {
     setIsDragging(false);
     scrollRef.current.style.cursor = "default";
   };
+
+  if (category === "popular") {
+    popularMovies(1).then((movies) => {
+      //console.log(movies);
+    });
+  }
+
   return (
     <article
       className="HorizontalMovieList"
@@ -44,9 +56,11 @@ const HorizontalMovieList = (props: { movies: Movie[] }): JSX.Element => {
       onMouseLeave={handleMouseUpOrLeave}
       role="presentation"
     >
-      {movies?.map((movie: Movie) => (
-        <MovieCard movie={movie} key={movie.id} />
-      ))}
+      <MovieCardSkeleton />
+      <MovieCardSkeleton />
+      <MovieCardSkeleton />
+      <MovieCardSkeleton />
+      <MovieCardSkeleton />
     </article>
   );
 };

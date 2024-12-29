@@ -13,11 +13,27 @@ const Main: React.FC = () => {
           <MovieList category={""} title={"Search result"} type="full" />
         ) : (
           <>
-            <MovieList category={""} title="Popular" type="horizontal" />
-            <MovieList category={""} title="Now Playing" type="horizontal" />
-            <MovieList category={""} title="Upcoming" type="horizontal" />
-            <MovieList category={""} title="Top Rated" type="horizontal" />
-            <MovieList category={""} title="Favorites" type="horizontal" />
+            <MovieList category={"popular"} title="Popular" type="horizontal" />
+            <MovieList
+              category={"nowplaying"}
+              title="Now Playing"
+              type="horizontal"
+            />
+            <MovieList
+              category={"upcoming"}
+              title="Upcoming"
+              type="horizontal"
+            />
+            <MovieList
+              category={"toprated"}
+              title="Top Rated"
+              type="horizontal"
+            />
+            <MovieList
+              category={"favorites"}
+              title="Favorites"
+              type="horizontal"
+            />
           </>
         )}
       </section>

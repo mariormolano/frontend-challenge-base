@@ -1,14 +1,19 @@
 import * as React from "react";
-import CircularProgress, {
-  CircularProgressProps,
-} from "@mui/material/CircularProgress";
+import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-const CircularProgressWithLabel = (
-  props: CircularProgressProps & { value: number; textsize: string },
-): JSX.Element => {
-  const { value, textsize } = props;
+interface Props {
+  value: number;
+  textsize: string;
+  size: string;
+}
+
+const CircularProgressWithLabel: React.FC<Props> = ({
+  value,
+  textsize,
+  size,
+}) => {
   let percentageColor: object = { color: "black" };
   if (value > 0) {
     percentageColor = { color: "red" };
@@ -21,7 +26,12 @@ const CircularProgressWithLabel = (
   }
   return (
     <Box sx={{ position: "relative", display: "inline-flex" }}>
-      <CircularProgress sx={percentageColor} variant="determinate" {...props} />
+      <CircularProgress
+        sx={percentageColor}
+        variant="determinate"
+        value={value}
+        size={size}
+      />
       <Box
         sx={{
           top: 0,
@@ -39,7 +49,7 @@ const CircularProgressWithLabel = (
           component="div"
           sx={{ color: "white", fontSize: textsize }}
         >
-          {props.value ? `${Math.round(props.value)}%` : "NR"}
+          {value ? `${Math.round(value)}%` : "NR"}
         </Typography>
       </Box>
     </Box>

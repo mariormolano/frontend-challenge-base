@@ -4,11 +4,6 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  background: linear-gradient(
-    45deg,
-    rgb(0, 0, 0) 19%,
-    rgba(102, 102, 102, 0) 100%
-  );
   backdrop-filter: blur(10px);
   background-repeat: no-repeat;
   background-size: cover;

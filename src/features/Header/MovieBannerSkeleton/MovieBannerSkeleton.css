@@ -1,9 +1,4 @@
-.MovieBannerContainer {
-  height: 100%;
-  width: 100%;
-  background-size: cover;
-}
-.MovieBanner {
+.MovieBannerSkeleton {
   height: 100%;
   width: 100%;
   box-sizing: border-box;
@@ -11,17 +6,11 @@
   color: white;
   display: flex;
   align-items: flex-end;
-  background: linear-gradient(
-    0deg,
-    rgb(0, 0, 0) 19%,
-    rgba(102, 102, 102, 0) 100%
-  );
+  background: linear-gradient(130deg, #000000, #7e7e7e, #000000);
+  background-size: 400%;
+  animation: animationBackground 2s ease infinite alternate;
 
-  main {
-    width: 100%;
-    height: 100%;
-  }
-  .MovieBannerDescription {
+  .MovieBannerSkeletonDescription {
     display: flex;
     justify-content: left;
     align-items: flex-start;
@@ -34,12 +23,14 @@
         h1 {
           font-size: 2em;
           margin: 0 0 0.5em 0;
+          mix-blend-mode: difference;
         }
       }
 
       dd {
         margin-inline-start: 0px;
         font-weight: 600;
+        mix-blend-mode: difference;
       }
     }
   }
@@ -51,5 +42,14 @@
     align-items: center;
     width: 30%;
     height: 170px;
+  }
+}
+
+@keyframes animationBackground {
+  from {
+    background-position: 0% 100%;
+  }
+  to {
+    background-position: 100% 0%;
   }
 }

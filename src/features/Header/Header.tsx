@@ -1,31 +1,27 @@
-"use client";
+"use server";
+import { Suspense } from "react";
 import "./Header.css";
 import MovieBanner from "./MovieBanner/MovieBanner";
-import { useStore } from "exome/react";
-import { moviesStore } from "@/core/storage/movies.store";
-
-const apiUrlImage = "https://image.tmdb.org/t/p/original";
+import MovieBannerSkeleton from "./MovieBannerSkeleton/MovieBannerSkeleton";
 
 const Header: React.FC = () => {
-  const { selectedMovie } = useStore(moviesStore);
-
-  const title = selectedMovie ? selectedMovie.title : "▮▮▮▮▮ ▮▮▮▮▮ ▮▮▮▮ ▮▮▮";
-  const description = selectedMovie
-    ? selectedMovie.overview
-    : "▮▮▮▮▮▮ ▮▮▮ ▮▮▮▮▮▮ ▮▮ ▮▮▮▮▮, ▮▮ ▮▮▮ ▮▮▮▮▮ ▮▮. ▮▮▮▮ ▮▮ ▮▮▮▮▮▮ ▮▮▮▮▮." +
-      " ▮▮▮ ▮▮▮▮▮ ▮ ▮▮▮▮▮. ▮▮▮ ▮▮▮▮▮▮▮▮ ▮▮ ▮▮▮▮▮▮▮▮▮.";
-  const urlImage = selectedMovie
-    ? apiUrlImage + selectedMovie.backdrop_path
-    : "";
-
   return (
     <header className="Header">
-      <MovieBanner
-        title={title}
-        description={description}
-        bannerImage={urlImage}
-        value={selectedMovie ? selectedMovie.vote_average * 10 : 50}
-      />
+      <Suspense fallback={<MovieBannerSkeleton />}>
+        <MovieBanner
+          data={
+            new Promise((resolve) => {
+              setTimeout(() => {
+                fetch(
+                  "https://api.themoviedb.org/3/movie/550?api_key=c0947635dbf419eb068a3fd9ddc580bd",
+                ).then((response) => {
+                  resolve(response.json());
+                });
+              }, 5000);
+            })
+          }
+        />
+      </Suspense>
     </header>
   );
 };

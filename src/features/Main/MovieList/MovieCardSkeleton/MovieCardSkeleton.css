@@ -1,0 +1,67 @@
+.MovieCardSkeleton {
+  background: #262626;
+  color: #ffffff;
+  width: 200px;
+  height: 335px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 10px;
+
+  .poster {
+    display: block;
+    width: 200px;
+    height: 223px;
+    box-sizing: border-box;
+    background: linear-gradient(90deg, #262626 0%, #575757 50%, #262626 100%);
+    background-size: 400% 400%;
+    animation: identifier 1.5s infinite;
+  }
+
+  .title {
+    box-sizing: border-box;
+    padding: 10px 0 0 10px;
+    line-height: 1.2em;
+    h2 {
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    p {
+      padding: 0;
+      margin: 0;
+      font-size: 9px;
+      font-weight: 400;
+    }
+  }
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      p {
+        font-size: 9px;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+@keyframes identifier {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
