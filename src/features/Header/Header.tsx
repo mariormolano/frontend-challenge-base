@@ -1,4 +1,5 @@
 "use server";
+import { getMovie } from "@/core/services/movies.service";
 import "./Header.css";
 import MovieBanner from "./MovieBanner/MovieBanner";
 
@@ -9,10 +10,8 @@ const Header: React.FC = () => {
         data={
           new Promise((resolve) => {
             setTimeout(() => {
-              fetch(
-                "https://api.themoviedb.org/3/movie/550?api_key=c0947635dbf419eb068a3fd9ddc580bd",
-              ).then((response) => {
-                resolve(response.json());
+              getMovie(550).then((response) => {
+                resolve(response);
               });
             }, 5000);
           })
