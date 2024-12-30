@@ -1,9 +1,10 @@
 import NavBar from "@/features/NavBar/NavBar";
 import { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const manrope = Manrope({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "QUICKBET Movies",
@@ -18,7 +19,7 @@ const RootLayout = ({
 }>): React.ReactElement => {
   return (
     <html lang="es">
-      <body className={inter.className}>
+      <body className={`${inter.className} ${manrope.className}`}>
         <NavBar />
         {children}
       </body>

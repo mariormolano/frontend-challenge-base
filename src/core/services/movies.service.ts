@@ -1,9 +1,15 @@
 "use server";
-import { Movie } from "../interfaces/movie.interface";
+import { Movie, DetailMovie } from "../interfaces/movie.interface";
 
 const TMDBServer = process.env.TMDB_URL;
 const TMDBKey = process.env.TMDB_API_KEY;
 const TMDBSearch = process.env.TMDB_SEARCH_URL;
+
+const getMovie = async (id: number): Promise<DetailMovie> => {
+  const response = await fetch(`${TMDBServer}/${id}?api_key=${TMDBKey}`);
+  const data: DetailMovie = await response.json();
+  return data;
+};
 
 const getMovieList = async (
   category: string,
@@ -30,4 +36,4 @@ const searchMovies = async (
   return searchMovies;
 };
 
-export { getMovieList, searchMovies };
+export { getMovieList, searchMovies, getMovie };

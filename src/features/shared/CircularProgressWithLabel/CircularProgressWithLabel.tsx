@@ -7,22 +7,47 @@ interface Props {
   value: number;
   textsize: string;
   size: string;
+  shadow?: boolean;
 }
 
 const CircularProgressWithLabel: React.FC<Props> = ({
   value,
   textsize,
   size,
+  shadow,
 }) => {
   let percentageColor: object = { color: "black" };
-  if (value > 0) {
-    percentageColor = { color: "red" };
-  }
-  if (value > 33) {
-    percentageColor = { color: "orange" };
-  }
-  if (value > 66) {
-    percentageColor = { color: "green" };
+  if (shadow) {
+    if (value > 0) {
+      percentageColor = {
+        color: "#ff3d3d",
+        filter: "drop-shadow(0 0 5px #ff3d3d)",
+      };
+    }
+    if (value > 33) {
+      percentageColor = {
+        color: "#ff9b3d",
+        filter: "drop-shadow(0 0 5px #ff9b3d)",
+      };
+    }
+    if (value > 66) {
+      percentageColor = {
+        color: "#65ff65",
+        filter: "drop-shadow(0 0 5px #65ff65)",
+      };
+    }
+  } else {
+    if (value > 0) {
+      percentageColor = { color: "red" };
+    }
+    if (value > 33) {
+      percentageColor = { color: "orange" };
+    }
+    if (value > 66) {
+      percentageColor = {
+        color: "green",
+      };
+    }
   }
   return (
     <Box sx={{ position: "relative", display: "inline-flex" }}>
