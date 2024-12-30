@@ -5,7 +5,7 @@ import FullMovieList from "./FullMovieList/FullMovieList";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { getMovieList } from "@/core/services/movies.service";
 import { Query } from "@/core/interfaces/query.interface";
-import { getMoviesWithConditionals } from "@/core/services/getmovie.service";
+import { getMoviesWithConditionals } from "@/core/services/getmovies.service";
 import Link from "next/link";
 
 interface Props {

@@ -16,6 +16,7 @@ export interface Movie {
 }
 
 export interface DetailMovie extends Movie {
+  [x: string]: unknown;
   adult: boolean;
   belongs_to_collection: BelongsToCollection | null;
   budget: number;

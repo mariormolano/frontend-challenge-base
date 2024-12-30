@@ -1,16 +1,20 @@
 "use server";
 import "./MovieInformation.css";
 import MovieData from "./MovieData/MovieData";
-import { getMovie } from "@/core/services/movies.service";
+import { getInfoMovie } from "@/core/services/movies.service";
 
-const MovieInformation: React.FC = () => {
+interface Props {
+  id: number;
+}
+
+const MovieInformation: React.FC<Props> = ({ id }) => {
   return (
     <header className="MovieInformation">
       <MovieData
         data={
           new Promise((resolve) => {
             setTimeout(() => {
-              getMovie(550).then((response) => {
+              getInfoMovie(id).then((response) => {
                 resolve(response);
               });
             }, 5000);

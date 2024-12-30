@@ -30,4 +30,5 @@ body {
   background: linear-gradient(180deg, #454545 0%, #343434 100%);
   background-repeat: no-repeat;
   height: fit-content !important;
+  min-height: 100vh;
 }

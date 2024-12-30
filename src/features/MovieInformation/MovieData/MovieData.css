@@ -1,5 +1,12 @@
+.MovieDataWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
 .MovieDataContainer {
-  height: 100%;
+  height: 560px;
   width: 100%;
   background-size: cover;
 }
