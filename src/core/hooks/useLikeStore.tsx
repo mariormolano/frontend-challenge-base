@@ -1,25 +1,28 @@
 import { useEffect, useState } from "react";
+import { Movie } from "../interfaces/movie.interface";
 
 interface LikeData {
-  id: number;
+  movie: Movie;
   like: boolean;
 }
 
-const useLikeStore = (id?: number): [boolean, (like: boolean) => void] => {
+const useLikeStore = (movie?: Movie): [boolean, (like: boolean) => void] => {
   const [likeSelect, setLikeSelect] = useState(false);
 
   useEffect(() => {
-    if (!id) {
+    if (!movie?.id) {
       setLikeSelect(true);
     }
-  }, [id]);
+  }, [movie?.id]);
 
   useEffect(() => {
     try {
-      const data: string | null = localStorage.getItem("like");
+      const data: string | null = localStorage.getItem(
+        movie?.id?.toString() ?? "",
+      );
       if (data) {
         const likeData: LikeData = JSON.parse(data);
-        if (likeData.id === id) {
+        if (likeData.movie.id === movie?.id) {
           setLikeSelect(likeData.like);
         } else {
           setLikeSelect(false);
@@ -30,17 +33,31 @@ const useLikeStore = (id?: number): [boolean, (like: boolean) => void] => {
     } catch (error) {
       setLikeSelect(false);
     }
-  }, [id]);
+  }, [movie?.id]);
 
   const changeLike = (like: boolean): void => {
     try {
-      if (id) {
+      if (movie) {
         const data: LikeData = {
-          id,
+          movie,
           like,
         };
         setLikeSelect(like);
-        localStorage.setItem("like", JSON.stringify(data));
+        const likeList: number[] = JSON.parse(
+          localStorage.getItem("likeList") ?? "[]",
+        );
+        if (!like) {
+          localStorage.removeItem(movie.id.toString());
+          localStorage.setItem(
+            "likeList",
+            JSON.stringify(likeList.filter((id) => id !== movie.id)),
+          );
+        } else {
+          localStorage.setItem(movie.id.toString() ?? "", JSON.stringify(data));
+          const tempLikeList = [...likeList];
+          tempLikeList.push(movie.id);
+          localStorage.setItem("likeList", JSON.stringify(tempLikeList));
+        }
       }
     } catch (error) {
       setLikeSelect(false);

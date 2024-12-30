@@ -3,6 +3,7 @@ import { Movie } from "../interfaces/movie.interface";
 
 const TMDBServer = process.env.TMDB_URL;
 const TMDBKey = process.env.TMDB_API_KEY;
+const TMDBSearch = process.env.TMDB_SEARCH_URL;
 
 const getMovieList = async (
   category: string,
@@ -20,10 +21,9 @@ const searchMovies = async (
   page: number,
   genre: number,
   query: string,
-  orderBy: string,
 ): Promise<Movie[]> => {
   const response = await fetch(
-    `${TMDBServer}?page=${page}&genre=${genre}&query=${query}&orderBy=${orderBy}`,
+    `${TMDBSearch}?query${query}?api_key=${TMDBKey}&page=${page}`,
   );
   const data = await response.json();
   const searchMovies: Movie[] = data.results as Movie[];

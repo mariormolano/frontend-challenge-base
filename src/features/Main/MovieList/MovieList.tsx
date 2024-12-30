@@ -4,14 +4,18 @@ import HorizontalMovieList from "./HorizontalMovieList/HorizontalMovieList";
 import FullMovieList from "./FullMovieList/FullMovieList";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { getMovieList } from "@/core/services/movies.service";
+import { Query } from "@/core/interfaces/query.interface";
+import { getMoviesWithConditionals } from "@/core/services/getmovie.service";
+import Link from "next/link";
 
 interface Props {
   category: string;
   title: string;
   type: string;
+  query?: Query;
 }
 
-const MovieList: React.FC<Props> = ({ category, title, type }) => {
+const MovieList: React.FC<Props> = ({ category, title, type, query }) => {
   return (
     <div className="MovieList">
       {type === "horizontal" ? (
@@ -30,11 +34,25 @@ const MovieList: React.FC<Props> = ({ category, title, type }) => {
         </span>
       ) : (
         <span>
-          <button>
-            <ArrowBackIcon />
-          </button>
+          <Link href="/">
+            <button>
+              <ArrowBackIcon />
+            </button>
+          </Link>
           <h2>{title}</h2>
-          <FullMovieList />
+          <FullMovieList
+            movies={
+              new Promise((resolve) => {
+                setTimeout(() => {
+                  getMoviesWithConditionals(
+                    query?.page ? parseInt(query.page) : 1,
+                    query?.genres ? parseInt(query.genres) : 0,
+                    query?.moviename ?? "",
+                  ).then((data) => resolve(data));
+                }, 5000);
+              })
+            }
+          />
         </span>
       )}
     </div>

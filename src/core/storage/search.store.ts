@@ -1,5 +1,5 @@
 import { Exome } from "exome";
-import { genres } from "@/core/list/genres.list";
+import { genres } from "@/core/mockups/genres.list";
 import { searchMovies } from "../services/movies.service";
 import { Movie } from "../interfaces/movie.interface";
 
@@ -30,7 +30,6 @@ class SearchStore extends Exome {
       page,
       this.genreID,
       this.search,
-      this.orderBy,
     ).then((movies) => {
       this.searchStatus = true;
 

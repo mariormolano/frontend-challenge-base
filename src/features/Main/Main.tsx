@@ -1,16 +1,27 @@
 "use server";
+import { Query } from "@/core/interfaces/query.interface";
 import "./Main.css";
 import SearchBar from "./SearchBar/SearchBar";
 import MovieList from "@/features/Main/MovieList/MovieList";
-const Main: React.FC = () => {
-  const searchStatus = false;
+
+interface Props {
+  query?: Query;
+}
+
+const Main: React.FC<Props> = ({ query }) => {
+  const searchStatus = !!query;
 
   return (
     <main className="Main">
       <SearchBar />
       <section>
         {searchStatus ? (
-          <MovieList category={""} title={"Search result"} type="full" />
+          <MovieList
+            category={""}
+            title={"Search result"}
+            type="full"
+            query={query}
+          />
         ) : (
           <>
             <MovieList category={"popular"} title="Popular" type="horizontal" />

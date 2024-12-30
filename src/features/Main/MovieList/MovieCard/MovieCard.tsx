@@ -40,7 +40,7 @@ const MovieCard: React.FC<Props> = ({ movie }) => {
         </div>
         <div>
           <p>Favorites</p>
-          <Like />
+          <Like movie={movie} />
         </div>
       </section>
     </div>

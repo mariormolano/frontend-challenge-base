@@ -35,7 +35,7 @@ const MovieBanner: React.FC<Props> = ({ data }) => {
           </dl>
         </section>
         <aside>
-          <Like id={movie.id} />
+          <Like movie={movie} />
           <CircularProgressWithLabel
             value={movie.vote_average * 10}
             textsize="25px"
