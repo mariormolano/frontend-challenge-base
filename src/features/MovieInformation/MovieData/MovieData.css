@@ -1,0 +1,214 @@
+.MovieDataWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.MovieDataContainer {
+  height: 560px;
+  width: 100%;
+  background-size: cover;
+}
+.MovieData {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: white;
+  background: linear-gradient(
+    0deg,
+    rgb(0, 0, 0) 19%,
+    rgba(102, 102, 102, 0) 100%
+  );
+  .Link {
+    position: absolute;
+    top: 5px;
+    left: 20px;
+    z-index: 10;
+    color: white;
+    font-size: 35px;
+    margin: 0;
+    text-decoration: none;
+    font-family: "Manrope variant0", Tofu, sans-serif;
+    font-weight: 600;
+  }
+
+  .MovieDataContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+  }
+
+  .MovieDataPosterContainer {
+    min-width: 350px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    margin-left: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    button {
+      background-color: #f0b90b;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+      max-width: 305px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .MovieDataPoster {
+    width: clamp(200px, 100%, 305px);
+    height: 395px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .MovieDataInfoContainer {
+    height: 100%;
+    width: 100%;
+    max-width: 1224px;
+    box-sizing: border-box;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .MovieDataDescription {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    dl {
+      margin: 0;
+      padding: 0;
+      dt {
+        h1 {
+          font-size: 2em;
+          margin: 0 0 0.5em 0;
+        }
+      }
+
+      dd {
+        margin-inline-start: 0px;
+        font-weight: 400;
+        line-height: 22px;
+        display: flex;
+        align-items: flex-start;
+        font-optical-sizing: none;
+      }
+    }
+  }
+
+  .MovieDataTitle {
+    width: 100%;
+    h1 {
+      width: 100%;
+      margin: 0;
+    }
+    span {
+      display: flex;
+      justify-content: space-between;
+      width: 55%;
+    }
+    .date {
+      text-transform: capitalize;
+    }
+    p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin: 25px 0;
+    }
+  }
+
+  .MovieDataScore {
+    box-sizing: border-box;
+    padding: 10px 30px 10px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .MovieDataUserScore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .MovieDataUserScoreText {
+    line-height: 5px;
+  }
+
+  .MovieDataGernes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    margin: 10px 0;
+    span {
+      color: #f1cb51;
+      border: 1px solid #f1cb51;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 10px;
+      border-radius: 5px;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .MovieDataPosterContainer {
+    height: 30% !important;
+  }
+  .MovieDataContent {
+    flex-direction: column;
+    align-items: center;
+  }
+  .MovieDataPoster {
+    display: none;
+  }
+  .MovieDataTitle {
+    h1 {
+      margin: 0 !important;
+    }
+    h2 {
+      margin: 10px 0 !important;
+    }
+  }
+  .MovieDataDescription {
+    dl {
+      dd {
+        height: 120px;
+        overflow-y: auto;
+      }
+    }
+  }
+}

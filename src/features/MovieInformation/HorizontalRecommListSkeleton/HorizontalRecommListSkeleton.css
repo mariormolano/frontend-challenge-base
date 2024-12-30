@@ -1,0 +1,11 @@
+.HorizontalRecommListSkeleton {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  box-sizing: border-box;
+  height: 381px;
+  width: 100%;
+  scrollbar-width: none;
+  overflow-x: scroll;
+}
