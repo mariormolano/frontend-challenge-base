@@ -1,7 +1,5 @@
 "use client";
 import "./MovieDataSkeleton.css";
-import Like from "../../shared/Like/Like";
-import CircularProgressWithLabel from "@/features/shared/CircularProgressWithLabel/CircularProgressWithLabel";
 
 const MovieDataSkeleton: React.FC = () => {
   const title = "▮▮▮▮▮ ▮▮▮▮▮ ▮▮▮▮ ▮▮▮";
@@ -18,10 +16,6 @@ const MovieDataSkeleton: React.FC = () => {
           <dd>{description}</dd>
         </dl>
       </section>
-      <aside>
-        <Like />
-        <CircularProgressWithLabel value={100} textsize="25px" size="92px" />
-      </aside>
     </article>
   );
 };

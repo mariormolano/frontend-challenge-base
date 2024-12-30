@@ -1,20 +1,22 @@
 .MovieDataSkeleton {
-  height: 100%;
+  height: 560px;
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
   color: white;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   background: linear-gradient(130deg, #000000, #7e7e7e, #000000);
   background-size: 400%;
   animation: animationBackground 2s ease infinite alternate;
+  padding-top: 100px;
 
   .MovieDataSkeletonDescription {
     display: flex;
     justify-content: left;
     align-items: flex-start;
-    width: 70%;
+    width: 100%;
+    padding-left: 20%;
 
     dl {
       padding: 0 4vw;
@@ -33,15 +35,6 @@
         mix-blend-mode: difference;
       }
     }
-  }
-
-  aside {
-    display: flex;
-    justify-content: center;
-    gap: 1vw;
-    align-items: center;
-    width: 30%;
-    height: 170px;
   }
 }
 

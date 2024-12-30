@@ -41,6 +41,7 @@ const MovieList: React.FC<Props> = ({ category, title, type, query }) => {
           </Link>
           <h2>{title}</h2>
           <FullMovieList
+            query={query}
             movies={
               new Promise((resolve) => {
                 setTimeout(() => {
