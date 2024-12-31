@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   title: "QUICKBET Movies",
   description:
     "QUICKBET Movies is a app to find your favorite movies, you can search for any movie and get all the information about it and add it to your favorite list.",
+  openGraph: {
+    title: "QUICKBET Movies",
+    description:
+      "QUICKBET Movies is a app to find your favorite movies, you can search for any movie and get all the information about it and add it to your favorite list.",
+    type: "website",
+    locale: "es_ES",
+    url: "frontend-challenge-base-snowy.vercel.app",
+  },
 };
 
 const RootLayout = ({

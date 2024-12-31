@@ -21,16 +21,20 @@ const MovieCard: React.FC<Props> = ({ movie }) => {
 
   return (
     <div className="MovieCard">
-      <a href={`/movie?id=${movie.id}`}>
-        <article
-          className="poster"
-          style={{ backgroundImage: `url(${urlImage + movie.poster_path})` }}
-        ></article>
+      <article
+        className="poster"
+        style={{ backgroundImage: `url(${urlImage + movie.poster_path})` }}
+      ></article>
+      <a
+        draggable={false}
+        href={`/movie?id=${movie.id}`}
+        className="MovieCardLink"
+      >
+        <article className="title">
+          <h2>{movie.title}</h2>
+          <p>{String(ReleaseDate)}</p>
+        </article>
       </a>
-      <article className="title">
-        <h2>{movie.title}</h2>
-        <p>{String(ReleaseDate)}</p>
-      </article>
       <section>
         <div>
           <p>Rating</p>
@@ -42,7 +46,7 @@ const MovieCard: React.FC<Props> = ({ movie }) => {
         </div>
         <div>
           <p>Favorites</p>
-          <Like movie={movie} />
+          <Like movie={movie} size={30} />
         </div>
       </section>
     </div>

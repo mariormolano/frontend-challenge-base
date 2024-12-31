@@ -1,17 +1,16 @@
 "use client";
 import ArrowCircleLeft from "@mui/icons-material/ArrowCircleLeft";
 
-import { useStore } from "exome/react";
 import SlideButton from "./SlideButton/SlideButton";
 import Lema from "./Lema/Lema";
 
-import { eventsStore } from "@/core/storage/events.store";
 import FormLogin from "./FormLogin/FormLogin";
 import FormLogout from "./FormLogout/FormLogout";
 
 const LoginModal = (): JSX.Element => {
-  const { modalSatate } = useStore(eventsStore);
   const session = false;
+
+  const modalSatate = true;
 
   return modalSatate ? (
     <dialog id="authform" className="LoginModal">

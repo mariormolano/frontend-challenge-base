@@ -1,20 +1,19 @@
 "use client";
-import "./HorizontalMovieList.css";
+import "./HorizontalFavList.css";
+import { useEffect, useRef, useState } from "react";
+import { useStore } from "exome/react";
+import useGetFavorites from "@/core/hooks/useGetFavorites";
 import MovieCardSkeleton from "../MovieCardSkeleton/MovieCardSkeleton";
 import MovieCard from "../MovieCard/MovieCard";
-import { useEffect, useRef, useState } from "react";
-import { Movie } from "@/core/interfaces/movie.interface";
+import { favoritesStore } from "@/core/storage/favs.store";
 
-interface Props {
-  movie: Promise<Movie[]>;
-}
-
-const HorizontalMovieList: React.FC<Props> = ({ movie }) => {
+const HorizontalFavList: React.FC = () => {
+  const { favoritesCount } = useStore(favoritesStore);
   const scrollRef = useRef<HTMLButtonElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const [movieList, setMovieList] = useState<Movie[] | null>(null);
+  const { favoritesState: favorites, getFavorites } = useGetFavorites();
 
   const handleMouseDown = (e: React.MouseEvent): void => {
     setIsDragging(true);
@@ -42,12 +41,12 @@ const HorizontalMovieList: React.FC<Props> = ({ movie }) => {
   };
 
   useEffect(() => {
-    movie.then(setMovieList);
-  }, []);
+    getFavorites();
+  }, [favoritesCount]);
 
   return (
     <button
-      className="HorizontalMovieList"
+      className="HorizontalFavList"
       ref={scrollRef}
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
@@ -55,8 +54,8 @@ const HorizontalMovieList: React.FC<Props> = ({ movie }) => {
       onMouseLeave={handleMouseUpOrLeave}
     >
       <div style={{ display: "none" }} />
-      {movieList ? (
-        movieList.map((movie) => {
+      {favorites ? (
+        favorites.map((movie) => {
           return <MovieCard key={movie.id} movie={movie} />;
         })
       ) : (
@@ -72,4 +71,4 @@ const HorizontalMovieList: React.FC<Props> = ({ movie }) => {
   );
 };
 
-export default HorizontalMovieList;
+export default HorizontalFavList;

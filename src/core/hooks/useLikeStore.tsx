@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { useStore } from "exome/react";
 import { Movie } from "../interfaces/movie.interface";
+import { favoritesStore } from "../storage/favs.store";
 
 interface LikeData {
   movie: Movie;
@@ -8,6 +10,7 @@ interface LikeData {
 
 const useLikeStore = (movie?: Movie): [boolean, (like: boolean) => void] => {
   const [likeSelect, setLikeSelect] = useState(false);
+  const { setFavoritesCount, favoritesCount } = useStore(favoritesStore);
 
   useEffect(() => {
     if (!movie?.id) {
@@ -48,6 +51,7 @@ const useLikeStore = (movie?: Movie): [boolean, (like: boolean) => void] => {
         );
         if (!like) {
           localStorage.removeItem(movie.id.toString());
+          setFavoritesCount(favoritesCount - 1);
           localStorage.setItem(
             "likeList",
             JSON.stringify(likeList.filter((id) => id !== movie.id)),
@@ -56,6 +60,7 @@ const useLikeStore = (movie?: Movie): [boolean, (like: boolean) => void] => {
           localStorage.setItem(movie.id.toString() ?? "", JSON.stringify(data));
           const tempLikeList = [...likeList];
           tempLikeList.push(movie.id);
+          setFavoritesCount(tempLikeList.length);
           localStorage.setItem("likeList", JSON.stringify(tempLikeList));
         }
       }

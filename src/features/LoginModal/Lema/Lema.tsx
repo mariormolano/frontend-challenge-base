@@ -2,11 +2,9 @@
 import Image from "next/image";
 import SingImage from "@/assets/images/sing.png";
 import LoginImage from "@/assets/images/login.png";
-import { useStore } from "exome/react";
-import { eventsStore } from "@/core/storage/events.store";
 
 const Lema = (): JSX.Element => {
-  const { slide } = useStore(eventsStore);
+  const slide = false;
   const singTitle = "Welcome to Quickbet Movies!";
   const loginTitle = "Welcome back to Quickbet Movies!";
   const singLema =

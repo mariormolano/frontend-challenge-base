@@ -1,12 +1,14 @@
 "use client";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { useStore } from "exome/react";
-import { eventsStore } from "@/core/storage/events.store";
+import { useState } from "react";
+//import { useStore } from "exome/react";
 
 const FormLogin = (): JSX.Element => {
-  const { showPassword, setShowPassword } = useStore(eventsStore);
-  const { slide } = useStore(eventsStore);
+  // const { showPassword, setShowPassword } = useStore(eventsStore);
+  // const { slide } = useStore(eventsStore);
+  const [showPassword, setShowPassword] = useState("password");
+  const [slide] = useState(false);
   return (
     <form>
       <input
@@ -25,7 +27,9 @@ const FormLogin = (): JSX.Element => {
           required
         />
         <div
-          onClick={() => setShowPassword(showPassword === "password")}
+          onClick={() =>
+            setShowPassword(showPassword === "password" ? "text" : "password")
+          }
           className="showpassword"
         >
           {showPassword === "password" ? <VisibilityOff /> : <Visibility />}

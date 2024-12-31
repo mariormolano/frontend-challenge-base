@@ -1,8 +1,7 @@
-import { useStore } from "exome/react";
-import { eventsStore } from "@/core/storage/events.store";
-
 const SlideButton = (): JSX.Element => {
-  const { slide, sing, login } = useStore(eventsStore);
+  const slide = false;
+  const sing = (): void => {};
+  const login = (): void => {};
 
   return (
     <div className="slide">

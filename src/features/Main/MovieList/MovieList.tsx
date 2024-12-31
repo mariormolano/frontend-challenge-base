@@ -1,12 +1,13 @@
 "use server";
 import "./MovieList.css";
-import HorizontalMovieList from "./HorizontalMovieList/HorizontalMovieList";
-import FullMovieList from "./FullMovieList/FullMovieList";
+import Link from "next/link";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { getMovieList } from "@/core/services/movies.service";
-import { Query } from "@/core/interfaces/query.interface";
+import HorizontalMovieList from "./HorizontalMovieList/HorizontalMovieList";
+import FullMovieList from "./FullMovieList/FullMovieList";
+import HorizontalFavList from "./HorizontalFavList/HorizontalFavList";
 import { getMoviesWithConditionals } from "@/core/services/getmovies.service";
-import Link from "next/link";
+import { Query } from "@/core/interfaces/query.interface";
 
 interface Props {
   category: string;
@@ -21,15 +22,20 @@ const MovieList: React.FC<Props> = ({ category, title, type, query }) => {
       {type === "horizontal" ? (
         <span>
           <h2>{title}</h2>
-          <HorizontalMovieList
-            movie={
-              new Promise((resolve) => {
-                setTimeout(() => {
-                  getMovieList(category, 1).then((data) => resolve(data));
-                }, 5000);
-              })
-            }
-          />
+
+          {category === "favorites" ? (
+            <HorizontalFavList />
+          ) : (
+            <HorizontalMovieList
+              movie={
+                new Promise((resolve) => {
+                  setTimeout(() => {
+                    getMovieList(category, 1).then((data) => resolve(data));
+                  }, 5000);
+                })
+              }
+            />
+          )}
         </span>
       ) : (
         <span>

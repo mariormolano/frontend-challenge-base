@@ -215,4 +215,14 @@
 
 .Recommendations {
   color: white;
+  h2 {
+    font-size: 30px;
+  }
+}
+
+.MovieDataActors {
+  color: white;
+  h2 {
+    font-size: 30px;
+  }
 }

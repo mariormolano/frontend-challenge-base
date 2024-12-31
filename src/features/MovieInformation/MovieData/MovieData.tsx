@@ -15,6 +15,8 @@ import { InfoMovie } from "@/core/interfaces/infomovie.interface";
 import { VideoInfo } from "@/core/interfaces/video.interface";
 import { Recommendations } from "@/core/interfaces/recommendations.interface";
 import HorizontalRecommList from "../HorizontalRecommList/HorizontalRecommList";
+import { Cast } from "@/core/interfaces/actors.interface";
+import FullActorList from "../FullActorList/FullActorList";
 
 const urlImage = "https://image.tmdb.org/t/p/w200";
 
@@ -30,6 +32,8 @@ const MovieData: React.FC<Props> = ({ data }) => {
   const [recommendations, setRecommendations] = useState<
     Recommendations[] | null
   >(null);
+  const [actors, setActors] = useState<Cast[]>();
+
   const [videoPlayer, setVideoPlayer] = useState<boolean>(false);
   const DateMovie = new Date(movie?.release_date ? movie.release_date : "");
   const day = DateMovie.getDate();
@@ -46,6 +50,7 @@ const MovieData: React.FC<Props> = ({ data }) => {
       data.then((movie: InfoMovie) => {
         setMovie(movie.detailMovie);
         setVideo(movie.videoInfo);
+        setActors(movie.actors);
         setRecommendations(movie.recommendations);
       });
     }
@@ -131,6 +136,10 @@ const MovieData: React.FC<Props> = ({ data }) => {
           ) : null}
         </div>
       </section>
+      <article className="MovieDataActors">
+        <h2>Actors</h2>
+        {actors && <FullActorList actors={actors} />}
+      </article>
     </div>
   ) : (
     <MovieDataSkeleton />

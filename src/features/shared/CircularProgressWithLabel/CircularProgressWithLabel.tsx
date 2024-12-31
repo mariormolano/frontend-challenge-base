@@ -50,7 +50,9 @@ const CircularProgressWithLabel: React.FC<Props> = ({
     }
   }
   return (
-    <Box sx={{ position: "relative", display: "inline-flex" }}>
+    <Box
+      sx={{ position: "relative", display: "inline-flex", marginTop: "10px" }}
+    >
       <CircularProgress
         sx={percentageColor}
         variant="determinate"

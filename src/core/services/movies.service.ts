@@ -2,6 +2,7 @@
 import { Movie, DetailMovie } from "../interfaces/movie.interface";
 import { InfoMovie } from "../interfaces/infomovie.interface";
 import { VideoInfo } from "../interfaces/video.interface";
+import { Cast } from "../interfaces/actors.interface";
 
 const TMDBServer = process.env.TMDB_URL;
 const TMDBKey = process.env.TMDB_API_KEY;
@@ -16,15 +17,28 @@ const getMovie = async (id: number): Promise<DetailMovie> => {
 
 const getInfoMovie = async (id: number): Promise<InfoMovie> => {
   const detailMovie = await getMovie(id);
+
   const videoInfo = await fetch(
     `${TMDBServer}/${id}/videos?api_key=${TMDBKey}`,
   ).then((res) => res.json());
-  const similarMovies = await fetch(
-    `${TMDBServer}/${id}/similar?api_key=${TMDBKey}`,
+
+  const actors = await fetch(
+    `${TMDBServer}/${id}/credits?api_key=${TMDBKey}`,
   ).then((res) => res.json());
+
   const recommendations = await fetch(
     `${TMDBServer}/${id}/recommendations?api_key=${TMDBKey}`,
   ).then((res) => res.json());
+
+  const actorsTemp: Cast[] = [];
+  if (actors.cast.length > 0) {
+    actors.cast.forEach((actor: Cast) => {
+      if (actor.known_for_department === "Acting" && actor.profile_path) {
+        actorsTemp.push(actor);
+      }
+    });
+  }
+
   const videoTemp: VideoInfo[] = [];
   if (videoInfo.results.length > 0) {
     videoInfo.results.forEach((video: VideoInfo) => {
@@ -37,7 +51,7 @@ const getInfoMovie = async (id: number): Promise<InfoMovie> => {
   return {
     detailMovie,
     videoInfo: videoTemp,
-    similarMovies: similarMovies.results,
+    actors: actorsTemp,
     recommendations: recommendations.results,
   };
 };
