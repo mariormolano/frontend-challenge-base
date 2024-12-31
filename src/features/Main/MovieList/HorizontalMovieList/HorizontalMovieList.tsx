@@ -7,10 +7,9 @@ import { Movie } from "@/core/interfaces/movie.interface";
 
 interface Props {
   movie: Promise<Movie[]>;
-  title: string;
 }
 
-const HorizontalMovieList: React.FC<Props> = ({ movie, title }) => {
+const HorizontalMovieList: React.FC<Props> = ({ movie }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);

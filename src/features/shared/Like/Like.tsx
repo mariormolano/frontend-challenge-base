@@ -5,21 +5,21 @@ import { Movie } from "@/core/interfaces/movie.interface";
 
 interface Props {
   movie?: Movie;
+  size?: number;
 }
 
-const Like: React.FC<Props> = ({ movie }) => {
+const Like: React.FC<Props> = ({ movie, size }) => {
   const [likeSelect, changeLike] = useLikeStore(movie);
-
   return (
     <aside>
       {likeSelect ? (
         <Favorite
-          sx={{ color: "white", cursor: "pointer" }}
+          sx={{ color: "white", cursor: "pointer", fontSize: size }}
           onClick={() => (movie?.id ? changeLike(false) : null)}
         />
       ) : (
         <FavoriteBorder
-          sx={{ color: "white", cursor: "pointer" }}
+          sx={{ color: "white", cursor: "pointer", fontSize: size }}
           onClick={() => (movie?.id ? changeLike(true) : null)}
         />
       )}

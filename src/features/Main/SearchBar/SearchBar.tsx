@@ -4,12 +4,6 @@ import { genres } from "@/core/mockups/genres.list";
 import Search from "@mui/icons-material/Search";
 
 const SearchBar: React.FC = () => {
-  // const handleSearch = (event: React.FormEvent<HTMLFormElement>): void => {
-  //   event.preventDefault();
-  //   const search = (event.currentTarget as HTMLFormElement).search.value;
-  //   const genres = (event.currentTarget as HTMLFormElement).genres.value;
-  //   console.log(search, genres);
-  // };
   return (
     <aside className="SearchBar">
       {/* <form onSubmit={handleSearch}> */}
@@ -24,10 +18,10 @@ const SearchBar: React.FC = () => {
               placeholder="Keywords"
               required
             />
-            <input type="hidden" name="page" value="1" />
             <button type="submit">
               <Search />
             </button>
+            <input type="hidden" name="page" value="1" />
           </div>
         </span>
         <span>

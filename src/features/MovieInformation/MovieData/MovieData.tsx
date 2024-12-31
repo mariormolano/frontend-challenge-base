@@ -69,18 +69,17 @@ const MovieData: React.FC<Props> = ({ data }) => {
                   backgroundImage: `url(${urlImage + movie.poster_path})`,
                 }}
               ></article>
-              {video ? (
+              {video?.[0]?.key && (
                 <button onClick={() => setVideoPlayer(true)}>
                   Official Trailer <PlayArrowOutlined />
                 </button>
-              ) : null}
-              {videoPlayer &&
-                (video ? (
-                  <VideoPlayer
-                    videoKey={video[0].key}
-                    setVideo={setVideoPlayer}
-                  />
-                ) : null)}
+              )}
+              {video?.[0]?.key && videoPlayer && (
+                <VideoPlayer
+                  videoKey={video[0].key}
+                  setVideo={setVideoPlayer}
+                />
+              )}
             </div>
             <div className="MovieDataInfoContainer">
               <section className="MovieDataDescription">
@@ -113,7 +112,7 @@ const MovieData: React.FC<Props> = ({ data }) => {
                     <p>Score</p>
                   </div>
                 </div>
-                <Like movie={movie} />
+                <Like movie={movie} size={45} />
               </aside>
               <article className="MovieDataGernes">
                 {movie.genres.map((genre) => (

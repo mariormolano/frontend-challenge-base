@@ -22,7 +22,6 @@ const MovieList: React.FC<Props> = ({ category, title, type, query }) => {
         <span>
           <h2>{title}</h2>
           <HorizontalMovieList
-            title={category}
             movie={
               new Promise((resolve) => {
                 setTimeout(() => {

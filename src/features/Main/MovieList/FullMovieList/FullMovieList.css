@@ -26,8 +26,8 @@
     border: 1px solid white;
     height: 80%;
     width: 30px;
-    display: flex;
-    justify-content: center;
+    display: inherit;
+    justify-content: inherit;
     align-items: center;
   }
 }

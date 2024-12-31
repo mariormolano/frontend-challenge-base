@@ -7,7 +7,7 @@
 
   form {
     color: white;
-    display: flex;
+    display: inherit;
     flex-direction: column;
     width: 100%;
     align-items: left;
@@ -16,13 +16,13 @@
     span {
       gap: 20px;
       width: 100%;
-      display: flex;
+      display: inherit;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
       div {
         width: 100%;
-        display: flex;
+        display: inherit;
       }
       button {
         margin: 0;

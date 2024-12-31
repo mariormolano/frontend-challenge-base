@@ -22,7 +22,7 @@
     height: 100%;
   }
   .MovieBannerDescription {
-    display: flex;
+    display: inherit;
     justify-content: left;
     align-items: flex-start;
     width: 70%;
@@ -45,7 +45,7 @@
   }
 
   aside {
-    display: flex;
+    display: inherit;
     justify-content: center;
     gap: 1vw;
     align-items: center;
