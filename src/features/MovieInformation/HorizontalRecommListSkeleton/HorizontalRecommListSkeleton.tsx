@@ -1,6 +1,6 @@
 "use client";
 import "./HorizontalRecommListSkeleton.css";
-import MovieCardSkeleton from "@/features/Main/MovieList/MovieCardSkeleton/MovieCardSkeleton";
+import MovieCardSkeleton from "@/features/shared/MovieCardSkeleton/MovieCardSkeleton";
 import { useEffect, useRef, useState } from "react";
 
 const HorizontalRecommListSkeleton: React.FC = () => {

@@ -21,12 +21,20 @@ export const getMoviesByTitle = async (
     api_key: TMDBKey ?? "",
   };
 
+  const dataResultsTemp: Movie[] = [];
   const searchParams = new URLSearchParams(params);
 
   const response = await fetch(`${TMDBSearch}?` + searchParams.toString());
 
   const data = await response.json();
-  const searchMovies: Movie[] = data.results as Movie[];
+  const dataResults = data.results;
+  dataResults.forEach((movie: Movie) => {
+    if (movie.poster_path) {
+      dataResultsTemp.push(movie);
+    }
+  });
+
+  const searchMovies: Movie[] = dataResultsTemp;
   totalPages = data.total_pages;
   return searchMovies;
 };
@@ -40,8 +48,6 @@ export const getMoviesWithConditionals = async (
   let temporal: Movie[] = [];
   let pageCount: number = 1;
 
-  // Verifica si la consulta ya se encuentra en cacheQuery
-  // para no repetir la consulta a la API
   if (cacheQuery[query]) {
     temporal = cacheQuery[query];
     if (genre > 0) {
@@ -75,7 +81,6 @@ export const getMoviesWithConditionals = async (
     pageCount++;
   }
 
-  // Alamcena el resultado de la consulta en cacheQuery
   cacheQuery[query] = items;
   temporal = items;
 

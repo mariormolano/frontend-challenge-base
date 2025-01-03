@@ -3,8 +3,8 @@ import "./HorizontalFavList.css";
 import { useEffect, useRef, useState } from "react";
 import { useStore } from "exome/react";
 import useGetFavorites from "@/core/hooks/useGetFavorites";
-import MovieCardSkeleton from "../MovieCardSkeleton/MovieCardSkeleton";
-import MovieCard from "../MovieCard/MovieCard";
+import MovieCardSkeleton from "../../../shared/MovieCardSkeleton/MovieCardSkeleton";
+import MovieCard from "../../../shared/MovieCard/MovieCard";
 import { favoritesStore } from "@/core/storage/favs.store";
 
 const HorizontalFavList: React.FC = () => {

@@ -2,9 +2,9 @@
 import "./FullMovieList.css";
 import { Movie } from "@/core/interfaces/movie.interface";
 import { MovieResponse } from "@/core/interfaces/movieresponse.interface";
-import MovieCard from "@/features/Main/MovieList/MovieCard/MovieCard";
+import MovieCard from "@/features/shared/MovieCard/MovieCard";
 import { useEffect, useState } from "react";
-import MovieCardSkeleton from "../MovieCardSkeleton/MovieCardSkeleton";
+import MovieCardSkeleton from "@/features/shared/MovieCardSkeleton/MovieCardSkeleton";
 import { Query } from "@/core/interfaces/query.interface";
 
 interface Props {

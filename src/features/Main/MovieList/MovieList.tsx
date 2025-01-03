@@ -4,7 +4,7 @@ import Link from "next/link";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { getMovieList } from "@/core/services/movies.service";
 import HorizontalMovieList from "./HorizontalMovieList/HorizontalMovieList";
-import FullMovieList from "./FullMovieList/FullMovieList";
+import FullMovieList from "@/features/shared/FullMovieList/FullMovieList";
 import HorizontalFavList from "./HorizontalFavList/HorizontalFavList";
 import { getMoviesWithConditionals } from "@/core/services/getmovies.service";
 import { Query } from "@/core/interfaces/query.interface";

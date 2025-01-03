@@ -1,7 +1,7 @@
 "use client";
 import "./HorizontalMovieList.css";
-import MovieCardSkeleton from "../MovieCardSkeleton/MovieCardSkeleton";
-import MovieCard from "../MovieCard/MovieCard";
+import MovieCardSkeleton from "../../../shared/MovieCardSkeleton/MovieCardSkeleton";
+import MovieCard from "../../../shared/MovieCard/MovieCard";
 import { useEffect, useRef, useState } from "react";
 import { Movie } from "@/core/interfaces/movie.interface";
 

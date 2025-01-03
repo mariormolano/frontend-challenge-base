@@ -1,5 +1,6 @@
 "use server";
-import { Movie, DetailMovie } from "../interfaces/movie.interface";
+import { Movie } from "../interfaces/movie.interface";
+import { DetailMovie } from "../interfaces/detailmovie.interface";
 import { InfoMovie } from "../interfaces/infomovie.interface";
 import { VideoInfo } from "../interfaces/video.interface";
 import { Cast } from "../interfaces/actors.interface";

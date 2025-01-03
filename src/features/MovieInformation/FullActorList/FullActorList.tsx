@@ -2,7 +2,7 @@
 import "./FullActorList.css";
 import ActorCard from "../ActorCard/ActorCard";
 import { useEffect, useState } from "react";
-import MovieCardSkeleton from "@/features/Main/MovieList/MovieCardSkeleton/MovieCardSkeleton";
+import MovieCardSkeleton from "@/features/shared/MovieCardSkeleton/MovieCardSkeleton";
 import { Cast } from "@/core/interfaces/actors.interface";
 
 interface Props {

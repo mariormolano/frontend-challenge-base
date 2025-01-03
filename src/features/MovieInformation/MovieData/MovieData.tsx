@@ -8,9 +8,9 @@ import PlayArrowOutlined from "@mui/icons-material/PlayArrowOutlined";
 import Like from "../../shared/Like/Like";
 import CircularProgressWithLabel from "@/features/shared/CircularProgressWithLabel/CircularProgressWithLabel";
 import MovieDataSkeleton from "../MovieDataSkeleton/MovieDataSkeleton";
-import VideoPlayer from "@/features/VideoPlayer/VideoPlayer";
+import VideoPlayer from "@/features/MovieInformation/VideoPlayer/VideoPlayer";
 
-import { DetailMovie } from "@/core/interfaces/movie.interface";
+import { DetailMovie } from "@/core/interfaces/detailmovie.interface";
 import { InfoMovie } from "@/core/interfaces/infomovie.interface";
 import { VideoInfo } from "@/core/interfaces/video.interface";
 import { Recommendations } from "@/core/interfaces/recommendations.interface";

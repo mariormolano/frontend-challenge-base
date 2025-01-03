@@ -1,7 +1,7 @@
 "use client";
 import "./HorizontalRecommList.css";
-import MovieCardSkeleton from "@/features/Main/MovieList/MovieCardSkeleton/MovieCardSkeleton";
-import MovieCard from "@/features/Main/MovieList/MovieCard/MovieCard";
+import MovieCardSkeleton from "@/features/shared/MovieCardSkeleton/MovieCardSkeleton";
+import MovieCard from "@/features/shared/MovieCard/MovieCard";
 import { useRef, useState } from "react";
 import { Recommendations } from "@/core/interfaces/recommendations.interface";
 

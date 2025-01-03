@@ -1,4 +1,4 @@
-import { DetailMovie } from "./movie.interface";
+import { DetailMovie } from "./detailmovie.interface";
 import { Recommendations } from "./recommendations.interface";
 import { Cast } from "./actors.interface";
 import { VideoInfo } from "./video.interface";
