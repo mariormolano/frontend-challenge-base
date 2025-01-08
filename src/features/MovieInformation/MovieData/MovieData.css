@@ -35,6 +35,13 @@
     font-family: "Manrope variant0", Tofu, sans-serif;
     font-weight: 600;
   }
+  .MovieBackLink {
+    background: none;
+    color: white;
+    font-size: 35px;
+    border-style: none;
+    cursor: pointer;
+  }
 
   .MovieDataContent {
     display: flex;

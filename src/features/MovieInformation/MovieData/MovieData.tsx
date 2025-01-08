@@ -2,7 +2,6 @@
 import "./MovieData.css";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import PlayArrowOutlined from "@mui/icons-material/PlayArrowOutlined";
 
 import Like from "../../shared/Like/Like";
@@ -64,9 +63,13 @@ const MovieData: React.FC<Props> = ({ data }) => {
       >
         <article className="MovieData">
           <div className="MovieDataContent">
-            <Link href={"/home"} className="Link">
+            <button
+              onClick={() => window.history.back()}
+              className="MovieBackLink"
+              aria-label="Go back"
+            >
               &#60;
-            </Link>
+            </button>
             <div className="MovieDataPosterContainer">
               <article
                 className="MovieDataPoster"
