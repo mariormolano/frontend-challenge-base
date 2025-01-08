@@ -1,4 +1,6 @@
 .HorizontalRecommList {
+  background: none;
+  border-style: none;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;

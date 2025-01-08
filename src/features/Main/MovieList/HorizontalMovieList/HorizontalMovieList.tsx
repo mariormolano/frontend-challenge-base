@@ -1,8 +1,9 @@
 "use client";
 import "./HorizontalMovieList.css";
+import { useEffect, useState } from "react";
+import useDragscroll from "@/core/hooks/useDragscroll";
 import MovieCardSkeleton from "../../../shared/MovieCardSkeleton/MovieCardSkeleton";
 import MovieCard from "../../../shared/MovieCard/MovieCard";
-import { useEffect, useRef, useState } from "react";
 import { Movie } from "@/core/interfaces/movie.interface";
 
 interface Props {
@@ -10,54 +11,19 @@ interface Props {
 }
 
 const HorizontalMovieList: React.FC<Props> = ({ movie }) => {
-  const scrollRef = useRef<HTMLButtonElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
+  const { scrollRef, drag } = useDragscroll();
   const [movieList, setMovieList] = useState<Movie[] | null>(null);
-
-  const handleMouseDown = (e: React.MouseEvent): void => {
-    setIsDragging(true);
-    if (scrollRef.current) {
-      setStartX(e.pageX - scrollRef.current.offsetLeft);
-      setScrollLeft(scrollRef.current.scrollLeft);
-    }
-  };
-
-  const handleMouseMove = (e: React.MouseEvent): void => {
-    if (!isDragging) return;
-    e.preventDefault();
-    if (scrollRef.current) {
-      scrollRef.current.style.cursor = "grabbing";
-      const x = e.pageX - scrollRef.current.offsetLeft;
-      const slide = x - startX;
-      scrollRef.current.scrollLeft = scrollLeft - slide;
-    }
-  };
-
-  const handleMouseUpOrLeave = (): void => {
-    if (!scrollRef.current) return;
-    setIsDragging(false);
-    scrollRef.current.style.cursor = "default";
-  };
 
   useEffect(() => {
     movie.then(setMovieList);
   }, []);
 
   return (
-    <button
-      className="HorizontalMovieList"
-      ref={scrollRef}
-      onMouseMove={handleMouseMove}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUpOrLeave}
-      onMouseLeave={handleMouseUpOrLeave}
-    >
+    <div className="HorizontalMovieList" ref={scrollRef}>
       <div style={{ display: "none" }} />
       {movieList ? (
         movieList.map((movie) => {
-          return <MovieCard key={movie.id} movie={movie} />;
+          return <MovieCard drag={drag} key={movie.id} movie={movie} />;
         })
       ) : (
         <>
@@ -68,7 +34,7 @@ const HorizontalMovieList: React.FC<Props> = ({ movie }) => {
           <MovieCardSkeleton />
         </>
       )}
-    </button>
+    </div>
   );
 };
 

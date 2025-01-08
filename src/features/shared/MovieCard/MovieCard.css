@@ -57,4 +57,9 @@
 .MovieCardLink {
   text-decoration: none;
   color: #ffffff;
+  cursor: pointer;
+}
+
+.MovieCardDisabled {
+  pointer-events: none;
 }

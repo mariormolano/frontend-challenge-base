@@ -130,11 +130,9 @@ const MovieData: React.FC<Props> = ({ data }) => {
       </main>
       <section className="Recommendations">
         <h2>Recommendations</h2>
-        <div className="RecommendationsContainer">
-          {recommendations ? (
-            <HorizontalRecommList movie={recommendations} />
-          ) : null}
-        </div>
+        {recommendations ? (
+          <HorizontalRecommList movie={recommendations} />
+        ) : null}
       </section>
       <article className="MovieDataActors">
         <h2>Actors</h2>

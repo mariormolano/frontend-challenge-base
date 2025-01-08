@@ -17,7 +17,7 @@ const MovieInformation: React.FC<Props> = ({ id }) => {
               getInfoMovie(id).then((response) => {
                 resolve(response);
               });
-            }, 5000);
+            }, 2000);
           })
         }
       />
